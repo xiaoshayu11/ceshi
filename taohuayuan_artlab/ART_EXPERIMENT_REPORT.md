@@ -55,7 +55,20 @@
 
 - `artdemo/`：独立 Godot 工程（project.godot / scenes/Main.tscn / scripts/main.gd / assets 26 GLB）
 - `blender/`：process_glb.py、recolor_mats.py、inspect_mats.py
-- `evidence/`：art_view_s0/s90/s180/s270.png、art_detail_house.png、art_detail_lantern.png、art_report_log.txt
+- **截图直链（GPT 审查用，raw.githubusercontent.com，6 张）**：
+
+| 截图 | 内容 | Raw 直链 |
+|---|---|---|
+| art_view_s0.png | 正向（0°）全景 | https://raw.githubusercontent.com/xiaoshayu11/ceshi/main/taohuayuan_artlab/art_view_s0.png |
+| art_view_s90.png | 右侧（90°）全景 | https://raw.githubusercontent.com/xiaoshayu11/ceshi/main/taohuayuan_artlab/art_view_s90.png |
+| art_view_s180.png | 背向（180°）全景 | https://raw.githubusercontent.com/xiaoshayu11/ceshi/main/taohuayuan_artlab/art_view_s180.png |
+| art_view_s270.png | 左侧（270°）全景 | https://raw.githubusercontent.com/xiaoshayu11/ceshi/main/taohuayuan_artlab/art_view_s270.png |
+| art_detail_house.png | 房屋特写（比例/造型） | https://raw.githubusercontent.com/xiaoshayu11/ceshi/main/taohuayuan_artlab/art_detail_house.png |
+| art_detail_lantern.png | 灯笼特写（色彩/暖化） | https://raw.githubusercontent.com/xiaoshayu11/ceshi/main/taohuayuan_artlab/art_detail_lantern.png |
+
+> 说明：以上 6 张即本地工程 `evidence/` 目录的同名截图，本仓库内路径统一为 `taohuayuan_artlab/`。
+> art_report_log.txt 为本地运行日志，未随仓库分发。
+
 - `RESOURCES_LICENSE.md`：资源与许可证清单
 - 本报告
 
