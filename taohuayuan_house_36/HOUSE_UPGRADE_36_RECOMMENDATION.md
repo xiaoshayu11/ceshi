@@ -1,7 +1,8 @@
 # 3.6 房屋升级 · WorkBuddy 独立判断与推荐方案
 
-> 版本：**v2.0（2026-11-22，第二轮修订）** · 上游：`HOUSE_UPGRADE_36_DESIGN.md`（v2 设计案）+ `HOUSE_UPGRADE_36_GEMINI_REVIEW.md`（两轮 Gemini 原始意见）+ `HOUSE_UPGRADE_36_REVISION_LOG.md`（两轮差异）
-> **结论先行：推荐方案 A 修正版 v2（睡觉延后 3.6b + 家具落成礼延后 3.7 + 全档 2250 铜 + L2 耳房静态摆件）**——等用户最终批准后才进入实施。
+> 版本：**v2.1（2026-11-22 00:05，第二轮修订 · 一致性修复）** · 与四份 3.6 文档统一版本
+> 上游：`HOUSE_UPGRADE_36_DESIGN.md`（v2.1 设计案）+ `HOUSE_UPGRADE_36_GEMINI_REVIEW.md`（两轮 Gemini 原始意见）+ `HOUSE_UPGRADE_36_REVISION_LOG.md`（两轮差异）
+> **结论先行：推荐方案 A 修正版 v2（睡觉延后 3.6b + 家具落成礼延后 3.7 + 全档 2250 铜[待批准] + L2 耳房静态摆件[三选一待批]）**——等用户最终批准后才进入实施。
 
 ---
 
