@@ -26,15 +26,15 @@
 | Chicken 白鸡 | jeremy | CC BY 3.0 | 需署名：jeremy + 原页链接 + 修改声明 | https://poly.pizza/m/1YE8U35HXsI |
 | Japanese Stone Lamp 石灯笼 | Flopsi（Google Poly 存档） | CC BY 3.0 | 需署名：Flopsi + 原页链接 + 修改声明 | https://poly.pizza/m/5gZfOZIW92k |
 
-## C. 游戏内致谢名单（逐件对应实际采用的 CC-BY 模型）
+## C. 游戏内致谢名单（逐件对应实际采用的 CC-BY 模型）· 验收修订
 ```
-Duck by jeremy (CC BY 3.0) - https://poly.pizza/m/2KHEgw1ztVI [modified]
-Chicken by jeremy (CC BY 3.0) - https://poly.pizza/m/1YE8U35HXsI [modified]
-Japanese Stone Lamp by Flopsi (CC BY 3.0) - https://poly.pizza/m/5gZfOZIW92k [modified]
-Nature & Forest Kit 42 parts by Polyfork (https://polyfork.dev) - Polyfork licence
-Sheep/Cow/Pig/Bird by Quaternius (CC0) - poly.pizza
+Duck by jeremy (CC BY 3.0) - https://poly.pizza/m/2KHEgw1ztVI - License: https://creativecommons.org/licenses/by/3.0/ [modified]
+Chicken by jeremy (CC BY 3.0) - https://poly.pizza/m/1YE8U35HXsI - License: https://creativecommons.org/licenses/by/3.0/ [modified]
+Japanese Stone Lamp by Flopsi (CC BY 3.0) - https://poly.pizza/m/5gZfOZIW92k - License: https://creativecommons.org/licenses/by/3.0/ [modified]
+Nature & Forest Kit 42 parts by Polyfork (https://polyfork.dev) - Polyfork licence: https://polyfork.dev/licensing
+Sheep (×2) / Cow / Pig / Bird by Quaternius (CC0 1.0) - https://poly.pizza
 ```
-> CC-BY 3.0 要求：署名作者 + 链接原页 + 声明修改（[modified] 即履行）。
+> CC-BY 3.0 要求：署名作者 + 链接原页 + 链接许可证 + 声明修改；三项均已逐件补齐（[modified] 即修改声明）。原模型页面、作者、授权版本、修改声明均保留；原始归档 `originals_sha256.json` 与处理后 `derived_sha256.json` 本次未改动。
 
 ## D. 排除声明
 - 无 NC（非商用）授权件；无无法核实版本的件。
