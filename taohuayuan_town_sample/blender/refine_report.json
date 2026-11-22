@@ -1,0 +1,24 @@
+{
+  "assets": [
+    {
+      "file": "custom_pond.glb",
+      "tris": 160,
+      "type": "pond"
+    },
+    {
+      "file": "npc_rabbit.glb",
+      "tris": 440,
+      "type": "npc"
+    },
+    {
+      "file": "npc_fox.glb",
+      "tris": 600,
+      "type": "npc"
+    },
+    {
+      "file": "npc_calf.glb",
+      "tris": 760,
+      "type": "npc"
+    }
+  ]
+}

@@ -16,6 +16,8 @@ const C_WATER := Color("7FAFB4")
 const C_CREAM := Color("F5E9D2")
 
 var _sun: DirectionalLight3D
+var _fill: DirectionalLight3D
+var _water_m: StandardMaterial3D
 var _veg_nodes: Array = []
 var _anim_players: Array = []
 var _npcs: Dictionary = {}
@@ -105,39 +107,116 @@ func _patch(pos: Vector3, radius: float, color: Color) -> void:
 	add_child(mi)
 
 func _build_environment() -> void:
+	# 能量守恒重分配：主光 0.74 + 暖环境 0.48，总受光不过曝；
+	# 环境光改暖米白（原冷蓝把奶油墙红黄通道吃掉，是背光发灰的根因）。
 	_sun = DirectionalLight3D.new()
-	_sun.rotation_degrees = Vector3(-38, -38, 0)
-	_sun.light_color = Color(1.0, 0.96, 0.88)
-	_sun.light_energy = 0.85
+	_sun.rotation_degrees = Vector3(-42, -38, 0)
+	_sun.light_color = Color(1.0, 0.95, 0.87)
+	_sun.light_energy = 0.70
 	_sun.shadow_enabled = true
+	_sun.shadow_bias = 0.03
+	_sun.shadow_normal_bias = 1.0
 	add_child(_sun)
-	var fill := DirectionalLight3D.new()
-	fill.rotation_degrees = Vector3(-20, 145, 0)
-	fill.light_color = Color(0.86, 0.90, 1.0)
-	fill.light_energy = 0.22
-	fill.shadow_enabled = false
-	add_child(fill)
+	_fill = DirectionalLight3D.new()
+	_fill.rotation_degrees = Vector3(-48, 0, 0)
+	_fill.light_color = Color(0.97, 0.90, 0.88)  # 暖粉补光，非冷蓝
+	_fill.light_energy = 0.22
+	_fill.shadow_enabled = false
+	add_child(_fill)
 	var env := WorldEnvironment.new()
 	var e := Environment.new()
 	e.background_mode = Environment.BG_COLOR
-	e.background_color = Color(0.78, 0.87, 0.93)
+	e.background_color = Color(0.80, 0.88, 0.94)
 	e.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	e.ambient_light_color = Color(0.72, 0.78, 0.86)
-	e.ambient_light_energy = 0.35
+	e.ambient_light_color = Color(0.90, 0.88, 0.84)
+	e.ambient_light_energy = 0.34
 	env.environment = e
 	add_child(env)
 
+# ---------- P0 地面/水面/土路 ----------
+func _ground() -> void:
+	var mi := MeshInstance3D.new()
+	var pm := PlaneMesh.new()
+	pm.size = Vector2(80, 80)
+	mi.mesh = pm
+	var m := _plain(Color.WHITE, 0.94)
+	m.albedo_texture = load("res://assets/textures/grass_noise.png")
+	m.uv1_scale = Vector3(2.2, 2.2, 1.0)
+	mi.material_override = m
+	mi.position.y = -0.02
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(mi)
+
+func _road(pts: Array, half: float, seed: int) -> void:
+	"""不规则边缘土路条带：顶点色中间亮/边缘暗，去矩形硬边。"""
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed
+	var verts := PackedVector3Array()
+	var cols := PackedColorArray()
+	var idx := PackedInt32Array()
+	for i in range(pts.size()):
+		var pt: Vector2 = pts[i]
+		var prv: Vector2 = pts[max(i - 1, 0)]
+		var nxt: Vector2 = pts[min(i + 1, pts.size() - 1)]
+		var t: Vector2 = (nxt - prv).normalized()
+		var n := Vector2(-t.y, t.x)
+		var w := half * (1.0 + sin(float(i) * 1.7) * 0.10 + rng.randf_range(-0.07, 0.07))
+		for side in [-1.0, 0.0, 1.0]:
+			var p: Vector2 = pt + n * (w * side)
+			verts.append(Vector3(p.x, 0.008 + rng.randf_range(-0.001, 0.001), p.y))
+			var c := C_DIRT if side == 0.0 else C_DIRT.darkened(0.10)
+			cols.append(c)
+	for i in range(pts.size() - 1):
+		var a := i * 3
+		var b := (i + 1) * 3
+		for j in range(2):
+			idx.append_array([a + j, b + j, b + j + 1, a + j, b + j + 1, a + j + 1])
+	var arr: Array = []
+	arr.resize(Mesh.ARRAY_MAX)
+	arr[Mesh.ARRAY_VERTEX] = verts
+	arr[Mesh.ARRAY_COLOR] = cols
+	arr[Mesh.ARRAY_INDEX] = idx
+	var mesh := ArrayMesh.new()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arr)
+	var mi := MeshInstance3D.new()
+	mi.mesh = mesh
+	mi.material_override = _vc_material()
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(mi)
+
+func _shore_scatter() -> void:
+	"""池塘岸线缓冲带：石/草/花分段簇状过渡，固定种子。"""
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 104729
+	var stones := []
+	var grass := []
+	var flowers := []
+	for i in range(42):
+		var a := float(i) * TAU / 42.0 + rng.randf_range(-0.07, 0.07)
+		var rr := rng.randf_range(0.96, 1.16)
+		var x := -15.0 + cos(a) * 5.15 * rr
+		var z := 7.0 + sin(a) * 4.55 * rr
+		var tf := [x, 0.01, z, rng.randf() * 180.0, rng.randf_range(0.65, 1.2)]
+		if i % 4 == 0:
+			stones.append(tf)
+		elif i % 4 == 1:
+			grass.append(tf)
+		else:
+			flowers.append(tf)
+	_multi_place(NATURE, "small-rock-db33a7.glb", stones)
+	_multi_place(NATURE, "grass-tuft-a40a08.glb", grass)
+	_multi_place(NATURE, "wildflower-68d3a1.glb", flowers)
+
 # ---------- 场景 ----------
 func _build_scene() -> void:
-	_plane(Vector2(80, 80), C_GRASS.darkened(0.04), Vector3.ZERO, -0.02)
-	# 土路：南入口 → 中心广场 → 住宅/商店分叉
-	_plane(Vector2(3.2, 22), C_DIRT, Vector3(0, 0, 10), -0.008)
-	_plane(Vector2(18, 3.0), C_DIRT, Vector3(0, 0, -1.5), -0.007)
-	_plane(Vector2(3.0, 10), C_DIRT, Vector3(-8, 0, -5.5), -0.006)
-	_plane(Vector2(3.0, 10), C_DIRT, Vector3(7, 0, -5.5), -0.006)
-	# 草地色块（低对比，避免大片单色）
-	for item in [[-14, -12, 4.5], [12, 8, 5.2], [-3, 13, 4.0], [16, -6, 3.8], [-20, 8, 4.6], [3, -12, 3.4]]:
-		_patch(Vector3(item[0], 0, item[1]), item[2], C_GRASS.darkened(0.035 + (item[0] % 3) * 0.01))
+	_ground()
+	# 不规则土路：南入口 → 中心广场 → 住宅/商店分叉（去矩形硬边）
+	_road([Vector2(0, 21), Vector2(0.1, 17), Vector2(-0.15, 13), Vector2(0.1, 9),
+		Vector2(-0.1, 5), Vector2(0.0, 1.2), Vector2(0.15, -1.5)], 1.5, 11)
+	_road([Vector2(-11, -1.55), Vector2(-8, -1.5), Vector2(-4, -1.45), Vector2(0, -1.5),
+		Vector2(4, -1.45), Vector2(8, -1.5), Vector2(11, -1.55)], 1.4, 12)
+	_road([Vector2(-8.2, -1.4), Vector2(-8.1, -4), Vector2(-8.4, -7), Vector2(-8.2, -10)], 1.25, 13)
+	_road([Vector2(7.1, -1.4), Vector2(7.2, -4), Vector2(7.0, -7), Vector2(7.2, -10)], 1.25, 14)
 	# 主路石板点缀 + 中心广场（同类 MultiMesh 合批）
 	var slabs := [[0, 0.005, 1.2, 0, 1]]
 	for i in range(11):
@@ -166,12 +245,14 @@ func _build_scene() -> void:
 	_place(PP, "pp_gYYC0gYMnw.glb", Vector3(12.5, 1.72, -8.0), -90, 1.0, false)
 
 	# 池塘 + 小桥（西侧）
-	var water := _place(NATURE, "water-blob-f266b8.glb", Vector3(-15, 0, 7), 15, 2.0)
+	var water := _place(CUSTOM, "custom_pond.glb", Vector3(-15, 0, 7), 0, 1.45)
 	_water_mat(water)
-	for p in [Vector3(-14.0, 0.02, 5.3), Vector3(-16.2, 0.02, 8.1), Vector3(-14.8, 0.02, 8.8), Vector3(-17.2, 0.02, 6.2)]:
-		_place(NATURE, "lily-pad-86edbb.glb", p, randf() * 90, 1.0, true, "pond")
-	_place(PP, "pp_2KHEgw1ztVI.glb", Vector3(-15.6, 0.03, 6.7), 160, 1.35, false, "pond")
-	_place(PP, "pp_2KHEgw1ztVI.glb", Vector3(-13.6, 0.03, 8.0), 40, 1.2, false, "pond")
+	for p in [Vector3(-14.0, 0.03, 5.3), Vector3(-16.2, 0.03, 8.1), Vector3(-14.8, 0.03, 8.8), Vector3(-17.2, 0.03, 6.2)]:
+		var lp := _place(NATURE, "lily-pad-86edbb.glb", p, randf() * 90, 1.35, false, "pond")
+		for mi in _meshes(lp):
+			mi.material_override = _plain(Color("6FA47A"), 0.85)
+	_place(PP, "pp_2KHEgw1ztVI.glb", Vector3(-15.6, 0.05, 6.7), 160, 1.9, false, "pond")
+	_place(PP, "pp_2KHEgw1ztVI.glb", Vector3(-13.6, 0.05, 8.0), 40, 1.7, false, "pond")
 	_place(NATURE, "log-plank-bridge-a5f74f.glb", Vector3(-10.2, 0, 7.2), 90, 1.1)
 	var reeds := []
 	for i in range(7):
@@ -179,12 +260,19 @@ func _build_scene() -> void:
 	_multi_place(NATURE, "cattail-reed-6abbb3.glb", reeds)
 	_place(PP, "pp_5gZfOZIW92k.glb", Vector3(-11.8, 0, 3.4), -20, 1.0, false, "stone_lamp")
 	_place(NATURE, "large-boulder-a29b99.glb", Vector3(-19.0, 0, 10.5), 20)
-	var shore := []
-	for i in range(9):
-		var a := i * TAU / 9
-		var r := 4.7 + (i % 3) * 0.25
-		shore.append([-15.0 + cos(a) * r, 0, 7.0 + sin(a) * r, (i * 41) % 180, 1])
-	_multi_place(NATURE, "small-rock-db33a7.glb", shore)
+	_shore_scatter()
+	# 土路边缘过渡草簇（打破路面与草地的硬矩形感）
+	var edge := []
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 331
+	for i in range(11):
+		var z := -0.5 + float(i) * 1.9
+		var side := 1.0 if i % 2 else -1.0
+		edge.append([side * (1.45 + rng.randf_range(0.05, 0.32)), 0.01, z, rng.randf() * 180, rng.randf_range(0.55, 0.9)])
+	for i in range(6):
+		var x := -9.5 + float(i) * 3.4
+		edge.append([x, 0.01, -1.5 + (1.0 if i % 2 else -1.0) * rng.randf_range(1.45, 1.8), rng.randf() * 180, rng.randf_range(0.5, 0.8)])
+	_multi_place(NATURE, "grass-tuft-a40a08.glb", edge)
 
 	# 树木与灌木（层次：高树外圈、灌木内圈）
 	for spec in [
@@ -225,14 +313,10 @@ func _build_scene() -> void:
 	_place(PP, "pp_1YE8U35HXsI.glb", Vector3(-1.5, 0, -4.5), 30, 1.0, false, "npc")
 
 func _water_mat(root: Node) -> void:
-	var m := StandardMaterial3D.new()
-	m.albedo_color = C_WATER
-	m.roughness = 0.15
-	m.metallic = 0.0
-	m.metallic_specular = 0.25
-	m.rim_enabled = true
-	m.rim = 0.6
-	m.rim_tint = 0.4
+	var m := _vc_material()
+	m.roughness = 0.24
+	m.metallic_specular = 0.32
+	_water_m = m
 	for mi in _meshes(root):
 		mi.material_override = m
 
@@ -337,6 +421,9 @@ func _anim_players_in(n: Node) -> Array:
 
 func _process(delta: float) -> void:
 	_time += delta
+	if _water_m:
+		_water_m.uv1_offset.x = fmod(_time * 0.006, 1.0)
+		_water_m.uv1_offset.y = fmod(_time * 0.004, 1.0)
 	var i := 0
 	for k in _npcs.keys():
 		var n: Node3D = _npcs[k]
@@ -432,6 +519,8 @@ func _cam(center: Vector3, dir: Vector3, dist: float, size: float) -> Camera3D:
 	add_child(c)
 	c.global_position = center + dir * dist + Vector3(0, dist * 0.82, 0)
 	c.look_at(center, Vector3.UP)
+	if _fill:
+		_fill.rotation_degrees = Vector3(-48, rad_to_deg(atan2(dir.x, dir.z)), 0)
 	return c
 
 func _snap(c: Camera3D, path: String) -> void:
