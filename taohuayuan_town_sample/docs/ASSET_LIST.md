@@ -17,8 +17,8 @@
 ## B. 程序化纹理（第二轮新增）
 | 文件 | 用途 | 参数 |
 |---|---|---|
-| `assets/textures/grass_noise.png` | 草地明暗层次 | 256×256 无缝瓦片，整数频率正弦叠加，色阶 #5A8058→#759961→#8AAC6C，uv1_scale 2.2×2.2 |
-| `assets/textures/water_ripple.png` | 水面细节备选 | 128×128 近白极淡波纹；最终水面改用纯顶点色（叠加近白纹理会洗白水色），保留文件供后续微调 |
+| `project/assets/textures/grass_noise.png` | 草地明暗层次 | 256×256 无缝瓦片，整数频率正弦叠加，色阶 #5A8058→#759961→#8AAC6C，uv1_scale 2.2×2.2 |
+| `project/assets/textures/water_ripple.png` | 水面细节备选 | 128×128 近白极淡波纹；最终水面改用纯顶点色（叠加近白纹理会洗白水色），保留文件供后续微调 |
 
 ## C. 沿用资产（来自 pipeline_01 derived，未改原始归档）
 树木 5 类、灌木、草、野花、蕨、芦苇、睡莲、石板/圆石、岩石、木栅栏/门、小桥、长椅、灯笼柱、鸟屋、井、桶、手推车、柴房；Poly Pizza 绿头鸭×2、鸡、鸟。原 `water-blob-f266b8.glb` 已被定制池塘替代，不再入场景。
@@ -31,4 +31,4 @@
 - 土路与地面 `cast_shadow = OFF`：大面积平面自阴影是横纹 acne 根因，关闭后条纹消失且建筑/树木阴影保留。
 
 ## E. 基础动作
-NPC 采用 Godot 节点级 idle 呼吸（sin 位移 ±0.012m）+ nod 点头（-12°），动作截图 `evidence/npc_action.png`；无 AnimationPlayer/Skeleton，零蒙皮开销。
+NPC 采用 Godot 节点级 idle 呼吸（sin 位移 ±0.012m）+ nod 点头（-12°），动作截图 `project/evidence/npc_action.png`；无 AnimationPlayer/Skeleton，零蒙皮开销。

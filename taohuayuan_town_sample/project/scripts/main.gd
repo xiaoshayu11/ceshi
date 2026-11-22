@@ -140,7 +140,11 @@ func _ground() -> void:
 	pm.size = Vector2(80, 80)
 	mi.mesh = pm
 	var m := _plain(Color.WHITE, 0.94)
-	m.albedo_texture = load("res://assets/textures/grass_noise.png")
+	var grass_tex: Texture2D = load("res://assets/textures/grass_noise.png")
+	if grass_tex == null:
+		push_error("MISSING res://assets/textures/grass_noise.png")
+	else:
+		m.albedo_texture = grass_tex
 	m.uv1_scale = Vector3(2.2, 2.2, 1.0)
 	mi.material_override = m
 	mi.position.y = -0.02
@@ -322,6 +326,9 @@ func _water_mat(root: Node) -> void:
 
 func _mm_place(fname: String, transforms: Array[Transform3D]) -> void:
 	var packed: PackedScene = load(NATURE + fname)
+	if packed == null:
+		push_error("MISSING " + NATURE + fname)
+		return
 	var src: Node3D = packed.instantiate()
 	add_child(src)
 	var mesh: Mesh = null
@@ -356,6 +363,9 @@ func _multi_place(dir: String, fname: String, specs: Array) -> void:
 
 func _mm_place_dir(dir: String, fname: String, transforms: Array[Transform3D]) -> void:
 	var packed: PackedScene = load(dir + fname)
+	if packed == null:
+		push_error("MISSING " + dir + fname)
+		return
 	var src: Node3D = packed.instantiate()
 	add_child(src)
 	var mesh: Mesh = null

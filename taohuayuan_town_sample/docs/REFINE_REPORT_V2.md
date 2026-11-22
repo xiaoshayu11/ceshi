@@ -15,18 +15,18 @@
 
 ## 二、精修前后对比（游戏镜头，非模型排列）
 
-- **全景前后**：`evidence/refine_before_after.png`（上=精修前 e35a5fd，下=精修后）。
-- **池塘前后**：`evidence/pond_before_after.png`（左=前，右=后）。
+- **全景前后**：`project/evidence/refine_before_after.png`（左=精修前 e35a5fd，右=精修后；本版重排为左右等尺寸并排，去除了旧版大面积空白）。
+- **池塘前后**：`project/evidence/pond_before_after.png`（左=前，右=后）。
 - 所有对比均为真实游戏镜头同场景机位，不用单体排列图代替展示效果。
 
 ## 三、验收截图清单（精修后）
-- 完整样板：`evidence/town_full.png`
-- 四向：`evidence/town_s0.png`、`town_s90.png`、`town_s180.png`、`town_s270.png`
-- 地面/池塘特写：`evidence/combo_pond_path.png`
-- 房屋正面/背光面/细节：`evidence/house_front_a.png`、`house_front_b.png`、`house_detail.png`
-- 商店：`evidence/shop_front.png`
-- NPC 正面/侧面/动作：`evidence/npc_{rabbit,fox,calf}_{front,side}.png`、`evidence/npc_action.png`
-- 组合：`evidence/combo_shop_furniture.png`
+- 完整样板：`project/evidence/town_full.png`
+- 四向：`project/evidence/town_s0.png`、`town_s90.png`、`town_s180.png`、`town_s270.png`
+- 地面/池塘特写：`project/evidence/combo_pond_path.png`
+- 房屋正面/背光面/细节：`project/evidence/house_front_a.png`、`house_front_b.png`、`house_detail.png`
+- 商店：`project/evidence/shop_front.png`
+- NPC 正面/侧面/动作：`project/evidence/npc_{rabbit,fox,calf}_{front,side}.png`、`project/evidence/npc_action.png`
+- 组合：`project/evidence/combo_shop_furniture.png`
 
 ### 逐项目检结论
 1. **地面**：由单色平板变为大块柔和明暗过渡，无密集网纹、无荧光色；房屋/路/树周围有草簇过渡。仍非照片级草地纹理，但符合低模卡通风格。

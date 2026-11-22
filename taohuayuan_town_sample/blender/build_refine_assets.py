@@ -1,12 +1,12 @@
 """第二轮视觉精修：定制池塘（顶点色深浅水）+ 重做小牛/统一NPC面部。
 Blender 4.5 headless: blender -b -t 2 --python build_refine_assets.py
-输出覆盖 ../assets/models/custom/{custom_pond,npc_calf,npc_rabbit,npc_fox}.glb
+输出覆盖 ../project/assets/models/custom/{custom_pond,npc_calf,npc_rabbit,npc_fox}.glb
 """
 import bpy, json, math, os
 from mathutils import Vector
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-OUT = os.path.join(ROOT, "assets", "models", "custom")
+OUT = os.path.join(ROOT, "project", "assets", "models", "custom")
 os.makedirs(OUT, exist_ok=True)
 
 P = {

@@ -1,12 +1,12 @@
 """Build cute round low-poly custom assets for Taohuayuan town sample.
 Blender 4.5 headless: blender -b -t 2 --python build_custom_assets.py
-Output: ../assets/models/custom/*.glb  + asset_report.json
+Output: ../project/assets/models/custom/*.glb  + asset_report.json
 """
 import bpy, json, math, os
 from mathutils import Vector
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-OUT = os.path.join(ROOT, "assets", "models", "custom")
+OUT = os.path.join(ROOT, "project", "assets", "models", "custom")
 os.makedirs(OUT, exist_ok=True)
 
 P = {

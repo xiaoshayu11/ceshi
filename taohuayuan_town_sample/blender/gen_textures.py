@@ -1,10 +1,10 @@
 """生成可平铺的程序化纹理：草地柔和噪声 + 水面极淡波纹（无需外部素材）。
-python gen_textures.py  -> ../godot_scene/assets/textures/*.png
+python gen_textures.py  -> ../project/assets/textures/*.png
 """
 import math, os, random
 from PIL import Image
 
-OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "godot_scene", "assets", "textures"))
+OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "project", "assets", "textures"))
 os.makedirs(OUT, exist_ok=True)
 
 def hexrgb(h):
