@@ -1,0 +1,302 @@
+[
+ {
+  "src_file": "birch-tree-181b33.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\birch-tree-181b33.glb",
+  "sha256": "efd4813338b7ae46a429b182e2c632490b6b2113c5654a9a5e8277a639c13de8",
+  "size": 72308
+ },
+ {
+  "src_file": "birdhouse-post-66d6c1.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\birdhouse-post-66d6c1.glb",
+  "sha256": "5c3291f20eb81ab2823a3ce26736c4e3c2bff0a21f19389d6a25f60759e26531",
+  "size": 46544
+ },
+ {
+  "src_file": "black-bear-adbdc7.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\black-bear-adbdc7.glb",
+  "sha256": "7580b2effa29180d5785cd28d5049b903cf7cf04c2913c22d5ef8cfd2f2d2c76",
+  "size": 1561864
+ },
+ {
+  "src_file": "broadleaf-oak-997c22.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\broadleaf-oak-997c22.glb",
+  "sha256": "f1043abb6e1a95de79fc447630283d799e63e17e0434827cfdc2de638560f4bc",
+  "size": 53860
+ },
+ {
+  "src_file": "campsite-picnic-table-361d51.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\campsite-picnic-table-361d51.glb",
+  "sha256": "24eea1af05d4ebf262c586427e08f5f4d40b52c2cc89e5f50617c923665806e1",
+  "size": 66872
+ },
+ {
+  "src_file": "cattail-reed-6abbb3.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\cattail-reed-6abbb3.glb",
+  "sha256": "da0f9ec2b40509515ffcb53757b9e8c012bfcad2102211e752dd4d5b7019039a",
+  "size": 45936
+ },
+ {
+  "src_file": "dirt-trail-strip-1be7a6.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\dirt-trail-strip-1be7a6.glb",
+  "sha256": "60680cbb9a37b9fc4a8a9b78a1a5338e1797a04f94cb617bfd8cc0f7642e3fcd",
+  "size": 14448
+ },
+ {
+  "src_file": "dock-platform-section-b36e7c.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\dock-platform-section-b36e7c.glb",
+  "sha256": "92c0213f450428efb8e7a9ea9a9649d9104e3eb0746faa54039197af33706f44",
+  "size": 42240
+ },
+ {
+  "src_file": "fallen-log-1685fb.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\fallen-log-1685fb.glb",
+  "sha256": "5febe55e615a4600ea5404297945b55ef4885de9041291febe458ca7ac0d3b62",
+  "size": 56908
+ },
+ {
+  "src_file": "fern-plant-1559b8.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\fern-plant-1559b8.glb",
+  "sha256": "578b2bf355756ae8b92248386a08dc92d867abe4f05a0d054aef66a3172f5aa5",
+  "size": 93172
+ },
+ {
+  "src_file": "firewood-stack-8a2899.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\firewood-stack-8a2899.glb",
+  "sha256": "ee049681acf0bf94bf015f21d16aa4d12855884f902dd3665d5c58b4e4e83aa4",
+  "size": 87460
+ },
+ {
+  "src_file": "forest-deer-fe648d.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\forest-deer-fe648d.glb",
+  "sha256": "5a6247d8501472a19e04aeb02ae8f16a25cfcd627ce34a6f5d0c3138dd422aeb",
+  "size": 1424448
+ },
+ {
+  "src_file": "forest-rabbit-ea2da0.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\forest-rabbit-ea2da0.glb",
+  "sha256": "77f35cac878c872be7e536616eb803efe204803b64f04cfdfd95b61b93909ed5",
+  "size": 1218056
+ },
+ {
+  "src_file": "grass-tuft-a40a08.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\grass-tuft-a40a08.glb",
+  "sha256": "3ae87f58a36aad088eaa4a75d8a97c67a7dcab90cfc047e6263dc0c5f7e8bcf2",
+  "size": 43704
+ },
+ {
+  "src_file": "lantern-post-f47665.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\lantern-post-f47665.glb",
+  "sha256": "959cfa52277b2fc3b7a43edddb9e50468d1d242043ecc949992c774b551f506f",
+  "size": 56932
+ },
+ {
+  "src_file": "large-boulder-a29b99.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\large-boulder-a29b99.glb",
+  "sha256": "129e0a594f0a4e0a6108ad146b525d11009294bfe361ae60cf6f309730639638",
+  "size": 66288
+ },
+ {
+  "src_file": "lily-pad-86edbb.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\lily-pad-86edbb.glb",
+  "sha256": "6c0bcd4d40cfa1b14a54fc874df1775dea53ab579a93cc7de0519688720c2d9b",
+  "size": 47084
+ },
+ {
+  "src_file": "log-cabin-4fac3b.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\log-cabin-4fac3b.glb",
+  "sha256": "8c2e0317622553d05fffbd34da8e1b9789d6c1636f8725bd9b35b2867cad5598",
+  "size": 153540
+ },
+ {
+  "src_file": "log-plank-bridge-a5f74f.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\log-plank-bridge-a5f74f.glb",
+  "sha256": "9ad72a4a34d57e5cfa5db565e73371bb0af2174e6fb9ee9775b3d2d4b9d0a44d",
+  "size": 56380
+ },
+ {
+  "src_file": "maple-tree-65fa12.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\maple-tree-65fa12.glb",
+  "sha256": "0cd2f4420f2e13490486fdb319a5405391b2d178786f8bf5be3ce03288a6a2bd",
+  "size": 49844
+ },
+ {
+  "src_file": "medium-rock-e08405.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\medium-rock-e08405.glb",
+  "sha256": "e85b74591fded8de1f7492f3d187328031763bd6889ed5625c6cefd923c93bec",
+  "size": 44328
+ },
+ {
+  "src_file": "open-woodshed-050a0a.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\open-woodshed-050a0a.glb",
+  "sha256": "616dce6cf85db3878dbccf9100767289783621a94780ec230cfedefa5898ea1b",
+  "size": 141520
+ },
+ {
+  "src_file": "red-fox-5c3bc0.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\red-fox-5c3bc0.glb",
+  "sha256": "d7984860c73eff31404523b264025b5f47e81f73bbaaed2cdf5fbc19cf45641e",
+  "size": 1434116
+ },
+ {
+  "src_file": "rock-spire-13819c.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\rock-spire-13819c.glb",
+  "sha256": "d159346d366d0dffd81b95f1949f64fbc3acd1cc6e49b5f48f36580ece9f5c86",
+  "size": 44824
+ },
+ {
+  "src_file": "round-bush-cd2ac0.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\round-bush-cd2ac0.glb",
+  "sha256": "3a7f963bd765924c531c53369d1fe2f724f19f8f45aef2eabe5ace238871ac26",
+  "size": 67072
+ },
+ {
+  "src_file": "round-path-stone-4130f3.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\round-path-stone-4130f3.glb",
+  "sha256": "d76231c22025ff56da50301fe0bf228b32f1a45f7186f2be4cb5cee03bb7a607",
+  "size": 7656
+ },
+ {
+  "src_file": "slab-path-stone-e526f7.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\slab-path-stone-e526f7.glb",
+  "sha256": "92c5342e412e59de486fd5ee9c74310fd988d974906460c26400f92ab043175a",
+  "size": 10388
+ },
+ {
+  "src_file": "small-rock-db33a7.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\small-rock-db33a7.glb",
+  "sha256": "43990df646f9cc5406e48c1c049fadcff200cf751b3edd734a86ffef37947bba",
+  "size": 24756
+ },
+ {
+  "src_file": "stone-fire-pit-4136b0.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\stone-fire-pit-4136b0.glb",
+  "sha256": "7e5df663a34da8ec36b9931e688724fe992e4e16ff37cf6401dbbf2746bf77e1",
+  "size": 68856
+ },
+ {
+  "src_file": "stone-well-2b4717.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\stone-well-2b4717.glb",
+  "sha256": "5717a38eddf890d59f22f5982a896b923e23024a0883e41ddaf165a9fd01d3ec",
+  "size": 72236
+ },
+ {
+  "src_file": "tall-pine-tree-ab4108.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\tall-pine-tree-ab4108.glb",
+  "sha256": "32081cc8c954233d04b9e4ee1569efc4df2a2f8e97f8e30f9e55e63ee9d6171e",
+  "size": 41632
+ },
+ {
+  "src_file": "tree-stump-ec3f48.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\tree-stump-ec3f48.glb",
+  "sha256": "63a3ead03d4192134314e10eb79161310a112095d9472a2bc5abeab36cacdf6f",
+  "size": 59276
+ },
+ {
+  "src_file": "water-blob-f266b8.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\water-blob-f266b8.glb",
+  "sha256": "a1fab00b35e631b333ba1437aec668439b1981f232bf03fa0801414d5da94a07",
+  "size": 54840
+ },
+ {
+  "src_file": "wildflower-68d3a1.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wildflower-68d3a1.glb",
+  "sha256": "c1eb0b97dce8fafee34f940088d2004567b1dfec01be6d460f80921bb9893a99",
+  "size": 47936
+ },
+ {
+  "src_file": "wooden-barrel-ab50ca.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-barrel-ab50ca.glb",
+  "sha256": "c5308391c0822d5e89653a52e2e21b86a53f748e77ee8063099422c94fff2758",
+  "size": 63748
+ },
+ {
+  "src_file": "wooden-bench-02e2c8.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-bench-02e2c8.glb",
+  "sha256": "97d94b89ab4c7605c89bee094d57f77d9b445093330b1086f7f4138fdf3ef71a",
+  "size": 66016
+ },
+ {
+  "src_file": "wooden-canoe-1d00c5.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-canoe-1d00c5.glb",
+  "sha256": "efdeeff2d75b4d46e0f552856e37204f24816255461fa8372b8114415b2443c9",
+  "size": 118604
+ },
+ {
+  "src_file": "wooden-fence-gate-a8735f.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-fence-gate-a8735f.glb",
+  "sha256": "a351b14c71010b99b08cb98fcf3667e1f280543035349dacc84b8015efef9165",
+  "size": 48412
+ },
+ {
+  "src_file": "wooden-fence-section-5f04b7.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-fence-section-5f04b7.glb",
+  "sha256": "f94d217e700644cf28cd7dfa5a56fb543a71b561b36fcd256a19d9e94852e120",
+  "size": 50448
+ },
+ {
+  "src_file": "wooden-hand-cart-3ae5b5.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-hand-cart-3ae5b5.glb",
+  "sha256": "3b51897159e66c807f51f35abf0ad9f76d2af2207d2cb36e5fcd55e1afa00d04",
+  "size": 162028
+ },
+ {
+  "src_file": "wooden-rowboat-916981.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\wooden-rowboat-916981.glb",
+  "sha256": "a727d4a1428dd1a2c56ece9508c3d23b58be99fbfce186abefdbf589ce13eaf0",
+  "size": 147380
+ },
+ {
+  "src_file": "young-pine-0d7695.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polyfork\\young-pine-0d7695.glb",
+  "sha256": "9bf72146a74e005aae80ea5962623b9810279426ab605570190607e0d0cde352",
+  "size": 32528
+ },
+ {
+  "src_file": "pp_C39AUXUUes.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_C39AUXUUes.glb",
+  "sha256": "91aedec323b54d42b802b065b2f5005daea527b0a379a9f3fe90f3258f3c2382",
+  "size": 156948
+ },
+ {
+  "src_file": "pp_rgJXF570ZK.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_rgJXF570ZK.glb",
+  "sha256": "0b259e1a5dbf4463901667e11529f229193a6f3869cecf30508f8cb5bbe3131f",
+  "size": 223324
+ },
+ {
+  "src_file": "pp_26zM1outCr.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_26zM1outCr.glb",
+  "sha256": "aa0dfbd619bc14838b48f6db02a56c2ee96f055930d957fcc5ef63af567b21ce",
+  "size": 1028584
+ },
+ {
+  "src_file": "pp_u35l6uP5vj.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_u35l6uP5vj.glb",
+  "sha256": "39a6187a43130b6d758090294ff4292c06a113df6b03243e124644eb8c71aee4",
+  "size": 300940
+ },
+ {
+  "src_file": "pp_gYYC0gYMnw.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_gYYC0gYMnw.glb",
+  "sha256": "d0d08da2e47307301cfcff1d9d8bf713f92af67cd329e7a165af7854dade33f6",
+  "size": 48544
+ },
+ {
+  "src_file": "pp_1YE8U35HXsI.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_1YE8U35HXsI.glb",
+  "sha256": "7d6bbb1c4ef38c52dfd0807864d8c8c9522092c11ce41b704fbaa75dc657202e",
+  "size": 51732
+ },
+ {
+  "src_file": "pp_2KHEgw1ztVI.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_2KHEgw1ztVI.glb",
+  "sha256": "6c0d9b46ac0cd643860625f42553bccb5474a5f815fd0b17eb5d50d77d6183d0",
+  "size": 32240
+ },
+ {
+  "src_file": "pp_5gZfOZIW92k.glb",
+  "path": "C:\\Users\\\u5c0f\u9ca8\u9c7c\\WorkBuddy\\artlab_taohuayuan\\polyfork_eval\\pipeline_01\\originals\\polypizza\\pp_5gZfOZIW92k.glb",
+  "sha256": "1b48cdee71864bdcbfbf776692a949dbdc1bd5bb9d198786ef34ae4c69eeb98b",
+  "size": 26132
+ }
+]

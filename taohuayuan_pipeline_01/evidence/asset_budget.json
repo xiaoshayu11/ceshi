@@ -1,0 +1,417 @@
+{
+  "inventory": [
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "birch-tree-181b33.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 619
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "birdhouse-post-66d6c1.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 393
+    },
+    {
+      "anims": 3,
+      "bones": 0,
+      "file": "black-bear-adbdc7.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 2542
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "broadleaf-oak-997c22.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 457
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "campsite-picnic-table-361d51.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 572
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "cattail-reed-6abbb3.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 388
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "dirt-trail-strip-1be7a6.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 112
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "dock-platform-section-b36e7c.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 356
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "fallen-log-1685fb.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 484
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "fern-plant-1559b8.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 802
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "firewood-stack-8a2899.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 752
+    },
+    {
+      "anims": 3,
+      "bones": 0,
+      "file": "forest-deer-fe648d.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 2230
+    },
+    {
+      "anims": 3,
+      "bones": 0,
+      "file": "forest-rabbit-ea2da0.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 2074
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "grass-tuft-a40a08.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 368
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "lantern-post-f47665.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 482
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "large-boulder-a29b99.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 566
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "lily-pad-86edbb.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 398
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "log-cabin-4fac3b.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 1326
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "log-plank-bridge-a5f74f.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 480
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "maple-tree-65fa12.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 422
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "medium-rock-e08405.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 374
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "open-woodshed-050a0a.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 1250
+    },
+    {
+      "anims": 3,
+      "bones": 0,
+      "file": "red-fox-5c3bc0.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 2280
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "rock-spire-13819c.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 378
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "round-bush-cd2ac0.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 573
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "round-path-stone-4130f3.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 52
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "slab-path-stone-e526f7.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 76
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "small-rock-db33a7.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 202
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "stone-fire-pit-4136b0.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 584
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "stone-well-2b4717.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 608
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "tall-pine-tree-ab4108.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 350
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "tree-stump-ec3f48.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 505
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "water-blob-f266b8.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 320
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wildflower-68d3a1.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 405
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-barrel-ab50ca.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 540
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-bench-02e2c8.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 564
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-canoe-1d00c5.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 1020
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-fence-gate-a8735f.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 408
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-fence-section-5f04b7.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 428
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-hand-cart-3ae5b5.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 1416
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "wooden-rowboat-916981.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 1262
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "young-pine-0d7695.glb",
+      "source": "Polyfork",
+      "surfaces": 1,
+      "tris": 270
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "pp_1YE8U35HXsI.glb",
+      "source": "PolyPizza",
+      "surfaces": 5,
+      "tris": 127
+    },
+    {
+      "anims": 25,
+      "bones": 0,
+      "file": "pp_26zM1outCr.glb",
+      "source": "PolyPizza",
+      "surfaces": 7,
+      "tris": 862
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "pp_2KHEgw1ztVI.glb",
+      "source": "PolyPizza",
+      "surfaces": 7,
+      "tris": 13
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "pp_5gZfOZIW92k.glb",
+      "source": "PolyPizza",
+      "surfaces": 1,
+      "tris": 308
+    },
+    {
+      "anims": 2,
+      "bones": 0,
+      "file": "pp_C39AUXUUes.glb",
+      "source": "PolyPizza",
+      "surfaces": 2,
+      "tris": 211
+    },
+    {
+      "anims": 0,
+      "bones": 0,
+      "file": "pp_gYYC0gYMnw.glb",
+      "source": "PolyPizza",
+      "surfaces": 1,
+      "tris": 315
+    },
+    {
+      "anims": 8,
+      "bones": 0,
+      "file": "pp_rgJXF570ZK.glb",
+      "source": "PolyPizza",
+      "surfaces": 1,
+      "tris": 696
+    },
+    {
+      "anims": 8,
+      "bones": 0,
+      "file": "pp_u35l6uP5vj.glb",
+      "source": "PolyPizza",
+      "surfaces": 1,
+      "tris": 1012
+    }
+  ],
+  "lint": {
+    "issues": [],
+    "maple_count": 2,
+    "metallic_zero": true,
+    "stone_lamp_count": 1
+  },
+  "scene": {
+    "date": "2026-11-22T14:57:58",
+    "multimesh_groups": 4,
+    "spec": "ART_ADAPT_SPEC_V1(v1.1) + PERF_SPEC_V1",
+    "title": "pipeline01 田园展示场景",
+    "total_tris": 33232
+  }
+}
