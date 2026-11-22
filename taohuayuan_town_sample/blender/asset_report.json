@@ -1,0 +1,39 @@
+{
+  "assets": [
+    {
+      "file": "custom_house.glb",
+      "tris": 3712
+    },
+    {
+      "file": "custom_shop.glb",
+      "tris": 4144
+    },
+    {
+      "file": "npc_rabbit.glb",
+      "tris": 440,
+      "spec": {
+        "height": 0.42,
+        "head_z": 0.255,
+        "eye": 0.014
+      }
+    },
+    {
+      "file": "npc_fox.glb",
+      "tris": 600,
+      "spec": {
+        "height": 0.58,
+        "head_z": 0.485,
+        "eye": 0.023
+      }
+    },
+    {
+      "file": "npc_calf.glb",
+      "tris": 948,
+      "spec": {
+        "height": 1.38,
+        "head_z": 1.03,
+        "eye": 0.055
+      }
+    }
+  ]
+}

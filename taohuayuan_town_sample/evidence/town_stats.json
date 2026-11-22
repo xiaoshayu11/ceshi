@@ -1,0 +1,305 @@
+{
+  "instances": [
+    {
+      "batch": true,
+      "count": 12,
+      "file": "slab-path-stone-e526f7.glb"
+    },
+    {
+      "batch": true,
+      "count": 7,
+      "file": "round-path-stone-4130f3.glb"
+    },
+    {
+      "file": "custom_house.glb",
+      "pos": [
+        -8.5,
+        0.0,
+        -6.5
+      ]
+    },
+    {
+      "batch": true,
+      "count": 4,
+      "file": "wooden-fence-section-5f04b7.glb"
+    },
+    {
+      "file": "wooden-fence-gate-a8735f.glb",
+      "pos": [
+        -8.5,
+        0.0,
+        -2.79999995231628
+      ]
+    },
+    {
+      "file": "lantern-post-f47665.glb",
+      "pos": [
+        -4.09999990463257,
+        0.0,
+        -2.40000009536743
+      ]
+    },
+    {
+      "file": "maple-tree-65fa12.glb",
+      "pos": [
+        -12.5,
+        0.0,
+        -8.80000019073486
+      ]
+    },
+    {
+      "file": "custom_shop.glb",
+      "pos": [
+        7.5,
+        0.0,
+        -6.5
+      ]
+    },
+    {
+      "file": "wooden-barrel-ab50ca.glb",
+      "pos": [
+        3.90000009536743,
+        0.0,
+        -3.29999995231628
+      ]
+    },
+    {
+      "file": "lantern-post-f47665.glb",
+      "pos": [
+        11.5,
+        0.0,
+        -2.5
+      ]
+    },
+    {
+      "file": "birdhouse-post-66d6c1.glb",
+      "pos": [
+        12.5,
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "file": "pp_gYYC0gYMnw.glb",
+      "pos": [
+        12.5,
+        1.72000002861023,
+        -8.0
+      ]
+    },
+    {
+      "file": "water-blob-f266b8.glb",
+      "pos": [
+        -15.0,
+        0.0,
+        7.0
+      ]
+    },
+    {
+      "file": "lily-pad-86edbb.glb",
+      "pos": [
+        -14.0,
+        0.0199999995529652,
+        5.30000019073486
+      ]
+    },
+    {
+      "file": "lily-pad-86edbb.glb",
+      "pos": [
+        -16.2000007629395,
+        0.0199999995529652,
+        8.10000038146973
+      ]
+    },
+    {
+      "file": "lily-pad-86edbb.glb",
+      "pos": [
+        -14.8000001907349,
+        0.0199999995529652,
+        8.80000019073486
+      ]
+    },
+    {
+      "file": "lily-pad-86edbb.glb",
+      "pos": [
+        -17.2000007629395,
+        0.0199999995529652,
+        6.19999980926514
+      ]
+    },
+    {
+      "file": "pp_2KHEgw1ztVI.glb",
+      "pos": [
+        -15.6000003814697,
+        0.0299999993294477,
+        6.69999980926514
+      ]
+    },
+    {
+      "file": "pp_2KHEgw1ztVI.glb",
+      "pos": [
+        -13.6000003814697,
+        0.0299999993294477,
+        8.0
+      ]
+    },
+    {
+      "file": "log-plank-bridge-a5f74f.glb",
+      "pos": [
+        -10.1999998092651,
+        0.0,
+        7.19999980926514
+      ]
+    },
+    {
+      "batch": true,
+      "count": 7,
+      "file": "cattail-reed-6abbb3.glb"
+    },
+    {
+      "file": "pp_5gZfOZIW92k.glb",
+      "pos": [
+        -11.8000001907349,
+        0.0,
+        3.40000009536743
+      ]
+    },
+    {
+      "file": "large-boulder-a29b99.glb",
+      "pos": [
+        -19.0,
+        0.0,
+        10.5
+      ]
+    },
+    {
+      "batch": true,
+      "count": 9,
+      "file": "small-rock-db33a7.glb"
+    },
+    {
+      "batch": true,
+      "count": 3,
+      "file": "broadleaf-oak-997c22.glb"
+    },
+    {
+      "batch": true,
+      "count": 2,
+      "file": "tall-pine-tree-ab4108.glb"
+    },
+    {
+      "batch": true,
+      "count": 2,
+      "file": "young-pine-0d7695.glb"
+    },
+    {
+      "batch": true,
+      "count": 3,
+      "file": "birch-tree-181b33.glb"
+    },
+    {
+      "batch": true,
+      "count": 8,
+      "file": "round-bush-cd2ac0.glb"
+    },
+    {
+      "file": "stone-well-2b4717.glb",
+      "pos": [
+        1.5,
+        0.0,
+        -6.5
+      ]
+    },
+    {
+      "batch": true,
+      "count": 3,
+      "file": "wooden-bench-02e2c8.glb"
+    },
+    {
+      "batch": true,
+      "count": 4,
+      "file": "prop_flowerpot.glb"
+    },
+    {
+      "batch": true,
+      "count": 4,
+      "file": "lantern-post-f47665.glb"
+    },
+    {
+      "batch": true,
+      "count": 2,
+      "file": "prop_crate.glb"
+    },
+    {
+      "file": "wooden-hand-cart-3ae5b5.glb",
+      "pos": [
+        12.5,
+        0.0,
+        -1.5
+      ]
+    },
+    {
+      "file": "open-woodshed-050a0a.glb",
+      "pos": [
+        14.5,
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "batch": true,
+      "count": 3,
+      "file": "medium-rock-e08405.glb"
+    },
+    {
+      "file": "npc_rabbit.glb",
+      "pos": [
+        -3.20000004768372,
+        0.0,
+        2.20000004768372
+      ]
+    },
+    {
+      "file": "npc_fox.glb",
+      "pos": [
+        5.19999980926514,
+        0.0,
+        -3.5
+      ]
+    },
+    {
+      "file": "npc_calf.glb",
+      "pos": [
+        8.5,
+        0.0,
+        4.5
+      ]
+    },
+    {
+      "file": "pp_1YE8U35HXsI.glb",
+      "pos": [
+        -1.5,
+        0.0,
+        -4.5
+      ]
+    }
+  ],
+  "lint": {
+    "autumn_trees": 1,
+    "npc": 4,
+    "stone_lamp": 1
+  },
+  "scene": {
+    "animation_players": 0,
+    "animations": 0,
+    "bones": 0,
+    "draw_calls_estimate": 80,
+    "model_types": 38,
+    "multimesh_groups": 3,
+    "placed_instances": 41,
+    "skeletons": 0,
+    "static_tris": 128727,
+    "title": "taohuayuan town sample",
+    "unique_materials": 48
+  }
+}
