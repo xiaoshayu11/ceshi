@@ -1,0 +1,122 @@
+{
+  "evidence": {
+    "blender_four_views": "asset_lab/blender/shots_three_tiers/ (12 png + overview_4views.png)",
+    "godot_gameview": "tests/evidence/glb_L{0,1,2}_view{0,90,180,270}.png + detail shots"
+  },
+  "generated_at": "2026-11-23",
+  "houses": {
+    "L0": {
+      "glb": "assets/houses/house_l0.glb",
+      "grounded_y0": true,
+      "import_test": "PASS (godot 4.7.2 headless probe)",
+      "material_count": 7,
+      "material_names": [
+        "L0_Stone",
+        "L0_MudWall",
+        "L0_PatchWood",
+        "L0_VoidDark",
+        "L0_RottenWood",
+        "L0_RoofBald",
+        "L0_Thatch"
+      ],
+      "mesh_count": 3,
+      "mesh_names": [
+        "Wall_All",
+        "Roof_All",
+        "Decor_All"
+      ],
+      "name_cn": "破屋",
+      "tri_budget": 8000,
+      "tri_count": 1956,
+      "within_budget": true,
+      "world_aabb_max": [
+        3.25,
+        4.48,
+        2.96
+      ],
+      "world_aabb_min": [
+        -3.25,
+        0.0,
+        -2.76
+      ]
+    },
+    "L1": {
+      "glb": "assets/houses/house_l1.glb",
+      "grounded_y0": true,
+      "import_test": "PASS (godot 4.7.2 headless probe)",
+      "material_count": 7,
+      "material_names": [
+        "L1_Stone",
+        "L1_CreamWall",
+        "L1_DarkTimber",
+        "L1_DoorDark",
+        "L1_WarmGlass",
+        "L1_LanternGlow",
+        "L1_BlueTile"
+      ],
+      "mesh_count": 3,
+      "mesh_names": [
+        "Wall_All",
+        "Decor_All",
+        "Roof_All"
+      ],
+      "name_cn": "木屋",
+      "tri_budget": 8000,
+      "tri_count": 5748,
+      "within_budget": true,
+      "world_aabb_max": [
+        4.38,
+        5.47,
+        3.8
+      ],
+      "world_aabb_min": [
+        -4.37,
+        0.0,
+        -3.4
+      ]
+    },
+    "L2": {
+      "glb": "assets/houses/house_l2.glb",
+      "grounded_y0": true,
+      "import_test": "PASS (godot 4.7.2 headless probe)",
+      "material_count": 8,
+      "material_names": [
+        "L2_Stone",
+        "L2_Timber",
+        "L2_Gold",
+        "L2_Lantern2",
+        "L2_RedWood",
+        "L2_White",
+        "L2_Glass",
+        "L2_Tile"
+      ],
+      "mesh_count": 3,
+      "mesh_names": [
+        "Decor_All",
+        "Wall_All",
+        "Roof_All"
+      ],
+      "name_cn": "瓦房+耳房",
+      "tri_budget": 8000,
+      "tri_count": 7916,
+      "within_budget": true,
+      "world_aabb_max": [
+        10.74,
+        6.54,
+        6.7
+      ],
+      "world_aabb_min": [
+        -5.01,
+        0.0,
+        -4.0
+      ]
+    }
+  },
+  "naming_convention": {
+    "decor": "Decor_*",
+    "roof": "*Roof* (遮挡层4)",
+    "wall": "*Wall* (碰撞层1 trimesh)"
+  },
+  "pipeline": "bpy 4.5 script (houses_three_tiers.py) -> GLB -> godot 4.7.2",
+  "project": "桃花源物语 MODEL-1 三档房屋"
+}
