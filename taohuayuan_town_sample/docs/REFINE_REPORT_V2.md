@@ -51,3 +51,11 @@
 
 ## 六、执行边界
 未修改正式游戏工程、未替换正式资产、未恢复 3.6、未批量导入剩余候选、未重写资产导入管线；所有改动在独立 ArtLab `town_sample/`。Gemini 未看截图、未声称视觉审查。交 GPT 第二轮终审；若仍不理想将如实指出，不为提交而宣称达标。
+
+## 七、最终交付修正（针对 4967bc7 的审查意见）
+1. **资源路径统一（最高优先级）**：Godot 工程入口 `project/project.godot` 保持不变；40 件 GLB 与 2 张程序化纹理全部移入 `project/assets/`，运行产物移入 `project/evidence/`。`main.gd` 的全部 `res://` 路径均已在工程内逐一核对存在；草地纹理增加 `MISSING` 显式报错，MultiMesh 加载增加空指针保护。`build_custom_assets.py` / `build_refine_assets.py` / `gen_textures.py` / `pack_blend_source.py` 输出全部改到 `project/assets/`。删除仓库根 `assets/` 与根 `evidence/` 副本，无软链接、无外部路径、无未提交依赖。
+2. **视觉复查**：`s0` 与 `combo_pond_path` 在 1280×720 实际游戏镜头下重新目检，并对行亮度做高通后周期自相关检查（峰值 ≤0.008），未见平行条纹残留；仅有树冠产生的不规则柔和阴影。草地噪声在该距离呈低频柔和明暗层次，可读、无网纹、无摩尔纹。
+3. **前后对比图重排**：`refine_before_after.png` 与 `pond_before_after.png` 统一改为左右等尺寸并排 + 顶部标题条，删除旧版大面积空白，前后两图完整显示。
+4. **性能边界不变**：未新增模型或几何细节；统计仍为 146,243 静态三角面 / DC 估算 77 / 38 种模型 / 0 骨骼。Android 仍未实测，继续如实标注；正式工程接入需为 NPC、作物、交互物与动态场景预留预算。
+5. **干净环境验证**：见 `docs/CLEAN_CLONE_VERIFICATION.md`（从 GitHub 提交后重新克隆、按 README 启动、重出四向截图的实测记录）。
+6. **执行边界**：仅改独立 ArtLab `town_sample/`；未修改正式游戏工程、未替换正式资产、未恢复 3.6 阶段二。

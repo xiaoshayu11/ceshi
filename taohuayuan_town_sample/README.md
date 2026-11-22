@@ -23,6 +23,7 @@ Public Raw 基址（GitHub ceshi 仓库）：
 ## 文档
 - `docs/TOWN_SAMPLE_REPORT.md`：第一轮视觉验收 + 桌面/Android 分开的性能记录
 - `docs/REFINE_REPORT_V2.md`：第二轮视觉精修与最终修正说明
+- `docs/CLEAN_CLONE_VERIFICATION.md`：从 GitHub 干净克隆后按 README 启动的实测记录
 - `docs/ASSET_LIST.md`：定制/沿用资产清单与统计
 - `docs/GEMINI_DESIGN_NOTES.md`：Gemini 独立方案与实际落地/偏差对照（含第二轮 P0/P1）
 
