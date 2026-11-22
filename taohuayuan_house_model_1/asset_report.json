@@ -9,10 +9,11 @@
       "glb": "assets/houses/house_l0.glb",
       "grounded_y0": true,
       "import_test": "PASS (godot 4.7.2 headless probe)",
-      "material_count": 7,
+      "material_count": 8,
       "material_names": [
         "L0_Stone",
         "L0_MudWall",
+        "L0_Stain",
         "L0_PatchWood",
         "L0_VoidDark",
         "L0_RottenWood",
@@ -27,7 +28,7 @@
       ],
       "name_cn": "破屋",
       "tri_budget": 8000,
-      "tri_count": 1956,
+      "tri_count": 2396,
       "within_budget": true,
       "world_aabb_max": [
         3.25,
@@ -79,16 +80,17 @@
       "glb": "assets/houses/house_l2.glb",
       "grounded_y0": true,
       "import_test": "PASS (godot 4.7.2 headless probe)",
-      "material_count": 8,
+      "material_count": 9,
       "material_names": [
         "L2_Stone",
         "L2_Timber",
         "L2_Gold",
         "L2_Lantern2",
-        "L2_RedWood",
+        "L2_GateWood",
+        "L2_Tile",
         "L2_White",
-        "L2_Glass",
-        "L2_Tile"
+        "L2_RedWood",
+        "L2_Glass"
       ],
       "mesh_count": 3,
       "mesh_names": [
@@ -103,7 +105,7 @@
       "world_aabb_max": [
         10.74,
         6.54,
-        6.7
+        4.3
       ],
       "world_aabb_min": [
         -5.01,
