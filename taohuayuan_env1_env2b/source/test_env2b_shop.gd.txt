@@ -1,0 +1,143 @@
+extends Node
+
+## ENV-2② 商业建筑样板（杂货铺·轻伞盖顶）行为验收套件。
+## 生产链路：正式 Town.tscn（真 GLB / 真碰撞 / 真 NPC / 真玩家）。
+##   A. GLB 三 Mesh 分组：Wall layer1 / Roof layer4+house_roof / Decor 零碰撞
+##   B. 三面实墙钻不入、正面门洞可进（真实玩家推进）
+##   C. 交互入口：NPC 在门前、门洞净空无 layer1 异物
+##   D. 屋顶材质可被 OcclusionFader 逐表面复制（StandardMaterial3D）
+##   E. 占地不越既有道路/邻栋：墙外射线与邻栋间距
+## 加 -- --no-autosave，绝不写生产存档。
+
+var _pass := 0
+var _fail := 0
+
+func check(cond: bool, msg: String) -> void:
+	if cond:
+		_pass += 1
+		print("  [PASS] " + msg)
+	else:
+		_fail += 1
+		printerr("  [FAIL] " + msg)
+
+func _physics_frames(n: int) -> void:
+	for i in range(n):
+		await get_tree().physics_frame
+
+func _ray(from: Vector3, to: Vector3, mask: int = 1) -> Dictionary:
+	var q := PhysicsRayQueryParameters3D.create(from, to)
+	q.collide_with_bodies = true
+	q.collision_mask = mask
+	return get_viewport().world_3d.direct_space_state.intersect_ray(q)
+
+func _hit_body(hit: Dictionary) -> StaticBody3D:
+	if hit.is_empty():
+		return null
+	return hit.get("collider") as StaticBody3D
+
+func _ready() -> void:
+	GameState.autosave_enabled = false
+	var town: Node = (load("res://scenes/world/Town.tscn") as PackedScene).instantiate()
+	add_child(town)
+	await _physics_frames(4)
+	var shop := town.find_child("Grocery", true, false)
+	check(shop != null and shop is ShopUmbrella, "正式镇区杂货铺已换为 ShopUmbrella 样板")
+	if shop == null:
+		print("结果：PASS=%d FAIL=%d" % [_pass, _fail])
+		get_tree().quit(1)
+		return
+
+	# A：三组 Mesh 挂接
+	var wall_body := shop.find_child("Wall_Body", true, false) as StaticBody3D
+	var roof_body := shop.find_child("Roof_Body", true, false) as StaticBody3D
+	check(wall_body != null and wall_body.collision_layer == 1,
+		"Wall_All → Wall_Body layer1（行走阻挡）")
+	check(roof_body != null and roof_body.collision_layer == 4 \
+		and roof_body.is_in_group("house_roof") and bool(roof_body.get_meta("house_roof", false)),
+		"Roof_All → Roof_Body layer4 + house_roof 组/meta")
+	var decor_ok := true
+	for n in shop.find_children("*", "MeshInstance3D", true, false):
+		if String(n.name).begins_with("Decor") and n.get_parent() is StaticBody3D:
+			decor_ok = false
+	check(decor_ok, "Decor_All 不挂 StaticBody（零碰撞）")
+
+	# A2：射线分工（屋顶上方 / 背墙 / 正面门洞）
+	var roof_hit := _hit_body(_ray(Vector3(9, 14, -3), Vector3(9, 0.5, -3), 4))
+	check(roof_hit != null and roof_hit == roof_body,
+		"垂直下射命中 Roof_Body（遮挡专用层）")
+	var back_hit := _ray(Vector3(14, 1.4, -3), Vector3(6, 1.4, -3))
+	var bh := _hit_body(back_hit)
+	check(bh != null and bh == wall_body and float(back_hit.get("position", Vector3.ZERO).x) > 10.5,
+		"东侧背墙命中 Wall_Body（x>10.5），无提前遮挡")
+	var door_hit := _ray(Vector3(4, 1.4, -3), Vector3(12, 1.4, -3))
+	var dh := _hit_body(door_hit)
+	check(dh == null or float(door_hit.get("position", Vector3.ZERO).x) > 10.5,
+		"西侧正面 y=1.4 射线穿门洞直达背墙（门未被封）")
+
+	# C：交互入口净空（门口中心 x≈7.0，z=-3）+ NPC 站位
+	var space := get_viewport().world_3d.direct_space_state
+	var shape := BoxShape3D.new()
+	shape.size = Vector3(0.5, 1.2, 1.2)
+	var q := PhysicsShapeQueryParameters3D.new()
+	q.shape = shape
+	q.transform = Transform3D(Basis(), Vector3(7.0, 0.8, -3.0))
+	q.collision_mask = 1
+	check(space.intersect_shape(q, 4).is_empty(), "门洞净空 0.5×1.2×1.2m 无 layer1 碰撞")
+	var npc_near := false
+	for n in town.find_children("TownNPC_*", "Node3D", true, false):
+		if absf((n as Node3D).global_position.x - 7.0) < 3.0 \
+			and absf((n as Node3D).global_position.z + 3.0) < 1.5:
+			npc_near = true
+	check(npc_near, "商家 NPC 站位在门前 3m 内（交互入口未挡）")
+
+	# D：屋顶逐表面材质可被淡化
+	var mat_ok := false
+	if roof_body != null:
+		for mi in roof_body.find_children("*", "MeshInstance3D", true, false):
+			var rmi := mi as MeshInstance3D
+			if rmi == null or rmi.mesh == null:
+				continue
+			for i in rmi.mesh.get_surface_count():
+				if rmi.mesh.surface_get_material(i) is StandardMaterial3D:
+					mat_ok = true
+	check(mat_ok, "屋顶表面材质为 StandardMaterial3D（OcclusionFader 可逐表面复制）")
+
+	# B：真实玩家推进（冻结自动物理，手动 move_and_slide）
+	var player := get_tree().get_first_node_in_group("player") as CharacterBody3D
+	check(player != null, "Town 场景玩家存在")
+	if player == null:
+		print("结果：PASS=%d FAIL=%d" % [_pass, _fail])
+		get_tree().quit(1)
+		return
+	player.set_physics_process(false)
+	# 玩家半径 ~0.4：正面推进会走到背墙内侧 x≈10.50，判定盒放宽到 10.7；
+	# 东侧背墙推进停在 x≈11.42，仍判为外部，不混淆。
+	var interior := AABB(Vector3(7.3, -1, -4.6), Vector3(3.4, 2, 3.2))
+	var pushes := [
+		{"n": "正面门洞", "p": Vector3(4.0, 0.1, -3.0), "d": Vector3(1, 0, 0), "want_in": true},
+		{"n": "东侧背墙", "p": Vector3(14.0, 0.1, -3.0), "d": Vector3(-1, 0, 0), "want_in": false},
+		{"n": "北侧实墙", "p": Vector3(9.0, 0.1, 2.0), "d": Vector3(0, 0, -1), "want_in": false},
+		{"n": "南侧实墙", "p": Vector3(9.0, 0.1, -8.0), "d": Vector3(0, 0, 1), "want_in": false},
+	]
+	for pp in pushes:
+		player.global_position = pp["p"]
+		player.velocity = Vector3.ZERO
+		await _physics_frames(2)
+		for i in range(85):
+			player.velocity = (pp["d"] as Vector3) * 8.5
+			player.move_and_slide()
+			await get_tree().physics_frame
+		var got := interior.has_point(player.global_position)
+		check(got == bool(pp["want_in"]),
+			"%s：终点=%s 到达内部=%s（期望 %s）"
+				% [pp["n"], player.global_position, got, pp["want_in"]])
+
+	# E：占地区间：邻栋木匠铺在 (9,6)，样板最北墙 z≈-0.5，两者净距 >5m
+	var carpenter := town.find_child("Carpenter", true, false)
+	check(carpenter != null and (carpenter as Node3D).global_position.z - (-0.5) > 5.0,
+		"样板占地不与北邻木匠铺穿插（净距 >5m）")
+	check(_ray(Vector3(0, 1.4, -3), Vector3(6, 1.4, -3)).is_empty(),
+		"主街 x∈[0,6] 无屋体碰撞（不挡道路动线）")
+
+	print("结果：PASS=%d FAIL=%d" % [_pass, _fail])
+	get_tree().quit(1 if _fail > 0 else 0)
