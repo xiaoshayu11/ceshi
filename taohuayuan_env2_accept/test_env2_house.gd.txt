@@ -1,0 +1,268 @@
+extends Node
+
+## ENV-2① 农场主屋 GLB 整合·行为验收套件（可回归，自动发现为第 40 套件）。
+## 截图类证据由 capture_env2_accept.gd/.tscn 出（真机渲染）；本套件用物理射线/
+## 真实玩家推进验证行为，不依赖渲染：
+##   A. GLB 三组 Mesh 碰撞/遮挡分工（Wall layer1 / Roof layer4 / Decor 零碰撞）
+##   B. 空壳屋钻不入（真实玩家从四向外墙推进，L0/L1/L2）
+##   C. 房屋周围通行不被碰撞阻碍（L2 最大占地绕圈）
+##   D. L2 门楼/围栏无冲突（门楼柱区无 layer1 + 围栏缺口通行 + 屋体不越围栏线）
+##   E. 升级档位一致（_rebuild_house 后根节点/档位 meta/GLB 结构）
+##   F. 屋顶 OcclusionFader 淡出/恢复（真实 fader + 真实玩家）
+## 加 -- --no-autosave（SAVE-GUARD 沙盒隔离生产档）。
+
+const SITE := Vector3(-9, 0, 20)
+
+var _pass := 0
+var _fail := 0
+
+func check(cond: bool, msg: String) -> void:
+	if cond:
+		_pass += 1
+		print("  [PASS] " + msg)
+	else:
+		_fail += 1
+		printerr("  [FAIL] " + msg)
+
+func _ready() -> void:
+	GameState.autosave_enabled = false
+	await _suite_glb_mesh_behavior()   # A（空场，避免与 World 房屋重叠）
+	await _suite_world_gameplay()      # B~F（World 场景生产链路）
+	print("结果：PASS=%d FAIL=%d" % [_pass, _fail])
+	get_tree().quit(1 if _fail > 0 else 0)
+
+func _ray(from: Vector3, to: Vector3) -> Dictionary:
+	var space := get_viewport().world_3d.direct_space_state
+	var q := PhysicsRayQueryParameters3D.create(from, to)
+	q.collide_with_bodies = true
+	return space.intersect_ray(q)
+
+func _hit_name(hit: Dictionary) -> String:
+	if hit.is_empty():
+		return ""
+	var c = hit.get("collider")
+	return String((c as Node).name) if c is Node else ""
+
+func _physics_frames(n: int) -> void:
+	for i in range(n):
+		await get_tree().physics_frame
+
+# ---------------------------------------------------------------- A
+## GLB 三组 mesh 行为：逐档 build 后用射线验证 Wall 挡 / Roof 遮挡 / Decor 不挡。
+## 旋转后门朝 -Z（北）：北侧 = 正面（L1/L2 有 Door_Blocker），南侧 = 实心背墙。
+func _suite_glb_mesh_behavior() -> void:
+	print("-- A：GLB 三组 Mesh 碰撞/遮挡分工 --")
+	for lv in [0, 1, 2]:
+		var b: Node3D = HouseBuilder.build(int(lv))
+		add_child(b)
+		await _physics_frames(3)
+		# a1 屋顶：从正上方垂直下射 → Roof_Body（layer 4，遮挡专用层）
+		var roof_hit := _ray(Vector3(-9, 16, 20), Vector3(-9, 0.5, 20))
+		var rb := roof_hit.get("collider") as StaticBody3D
+		check(rb != null and String(rb.name).begins_with("Roof_Body")
+			and rb.collision_layer == 4, "L%d 屋顶命中 Roof_Body 且 layer4（遮挡）" % int(lv))
+		# a2 西墙：水平射线 → Wall_Body（layer 1，行走阻挡）；Decor/门板不得先挡
+		var wall_hit := _ray(Vector3(-26, 1.5, 20), Vector3(-5, 1.5, 20))
+		var wb := wall_hit.get("collider") as StaticBody3D
+		check(wb != null and String(wb.name).begins_with("Wall_Body")
+			and wb.collision_layer == 1, "L%d 西墙命中 Wall_Body 且 layer1（阻挡）" % int(lv))
+		# a3 北正面（门侧）：L1/L2 第一命中 Door_Blocker（洞封）；L0 实心破墙 Wall_Body
+		var front_hit := _ray(Vector3(-9, 1.5, 13), Vector3(-9, 1.5, 19))
+		var fb := front_hit.get("collider") as StaticBody3D
+		if lv == 0:
+			check(fb != null and String(fb.name).begins_with("Wall_Body"),
+				"L0 北面实心破墙挡射线（无 blocker 设计如此）" )
+		else:
+			check(fb != null and String(fb.name) == "Door_Blocker"
+				and fb.collision_layer == 1, "L%d 北面门洞被 Door_Blocker 封死" % int(lv))
+		# a4 南背墙：实心，钻不入
+		var back_hit := _ray(Vector3(-9, 1.5, 27), Vector3(-9, 1.5, 21))
+		var bb := back_hit.get("collider") as StaticBody3D
+		check(bb != null and (String(bb.name).begins_with("Wall_Body")
+			or String(bb.name) == "Door_Blocker"), "L%d 南背墙实心挡射线" % int(lv))
+		# a5 装饰不挡：L0 危屋木牌/破桶在门前 (−11.2,14.8)/(−6.9,15.55) 附近高度；
+		# 射线穿过装饰典型高度应命中其后的墙/blocker 而非被装饰拦截——用
+		# 「命中体不是 Decor 组网格」表达：GLB Decor 无 StaticBody，射线命中体必为 body。
+		# 直接验证：Decor_All 网格节点无任何 StaticBody 祖先（除挂接的 Wall/Roof body）
+		var decor_orphan_ok := true
+		for n in b.find_children("*_All", "MeshInstance3D", true, false):
+			var nm := String(n.name)
+			if nm.begins_with("Decor"):
+				var p := n.get_parent()
+				if p is StaticBody3D:
+					decor_orphan_ok = false
+		check(decor_orphan_ok, "L%d Decor_*_All 网格不挂任何 StaticBody（零碰撞）" % int(lv))
+		b.queue_free()
+		await get_tree().process_frame
+		await get_tree().process_frame
+
+# ---------------------------------------------------------------- B/C/D/E/F
+func _suite_world_gameplay() -> void:
+	print("-- B~F：World 场景生产链路（真实玩家）--")
+	var world: Node = (load("res://scenes/world/World.tscn") as PackedScene).instantiate()
+	add_child(world)
+	for i in range(4):
+		await get_tree().physics_frame
+	var gr := world.get_node("GameplayRoot")
+	var player := get_tree().get_first_node_in_group("player") as CharacterBody3D
+	check(player != null, "World 场景玩家存在")
+	if player == null or gr == null:
+		print("结果：PASS=%d FAIL=%d" % [_pass, _fail])
+		get_tree().quit(1)
+		return
+	# 冻结玩家自身 _physics_process（无输入时会清零 velocity），由本套件驱动
+	player.set_physics_process(false)
+
+	## 内部区（墙体以内）判定盒：旋转后 footprint 内缩 ≥0.75m（含玩家半径余量），
+	## 盒边缘不得越过墙平面，否则贴墙滑行的玩家会被误判「泄漏」。
+	## L2 耳房为全封闭实心壳（Wall_EastWing_Body 整块），无需单独判定盒。
+	var interior := {
+		0: AABB(Vector3(-11.0, -1, 18.5), Vector3(4.0, 2, 3.0)),
+		1: AABB(Vector3(-12.0, -1, 17.9), Vector3(6.0, 2, 4.2)),
+		2: AABB(Vector3(-12.4, -1, 17.4), Vector3(6.8, 2, 5.2)),
+	}
+
+	print("-- B：空壳屋钻不入（四向外墙推进）--")
+	for lv in [0, 1, 2]:
+		GameState.house.level = int(lv)
+		if gr.has_method("_rebuild_house"):
+			gr.call("_rebuild_house")
+		await _physics_frames(4)
+		var box: AABB = interior[int(lv)]
+		var push_points := [
+			{"p": Vector3(-9, 0.1, 15.2), "d": Vector3(0, 0, 1)},    # 北正面推进
+			{"p": Vector3(-9, 0.1, 24.8), "d": Vector3(0, 0, -1)},   # 南背墙
+			{"p": Vector3(-21.5, 0.1, 20), "d": Vector3(1, 0, 0)},   # 西（L2 耳房侧）
+			{"p": Vector3(-3.6, 0.1, 20), "d": Vector3(-1, 0, 0)},   # 东
+		]
+		var leaked := 0
+		for pp in push_points:
+			player.global_position = pp["p"]
+			player.velocity = Vector3.ZERO
+			await _physics_frames(2)
+			for i in range(75):
+				player.velocity = (pp["d"] as Vector3) * 8.5
+				player.move_and_slide()
+				await get_tree().physics_frame
+			var gp := player.global_position
+			if box.has_point(gp):
+				leaked += 1
+				printerr("      泄漏点 lv=%d from=%s 终点=%s" % [int(lv), pp["p"], gp])
+		check(leaked == 0, "L%d 四向推进均无法钻入屋内（泄漏 %d/4）" % [int(lv), leaked])
+		# E：升级档位一致（生产 _rebuild_house 链路）
+		var root_ok := false
+		for n in world.find_children("House_L%d_Root" % int(lv), "Node3D", true, false):
+			root_ok = int(n.get_meta("house_level", -1)) == int(lv) \
+				and n.find_children("Roof_Body*", "StaticBody3D", true, false).size() > 0
+		check(root_ok, "L%d 重建后根节点/档位 meta/GLB 结构一致" % int(lv))
+
+	print("-- C：房屋周围通行不被碰撞阻碍（L2 最大占地绕圈，全程围栏内侧院区）--")
+	GameState.house.level = 2
+	if gr.has_method("_rebuild_house"):
+		gr.call("_rebuild_house")
+	await _physics_frames(4)
+	# 南腿 z=15.8：围栏(15.0~15.2)与门洞封堵体(南面 16.2)之间的真实可行走廊
+	# （门口交互件 z=15.6 就在这条走廊上）；绕圈不得跨越围栏——挡住是正确行为。
+	var ring := [
+		Vector3(-9, 0.1, 15.8), Vector3(-20.8, 0.1, 15.8),
+		Vector3(-20.8, 0.1, 25.8), Vector3(-2.2, 0.1, 25.8),
+		Vector3(-2.2, 0.1, 15.8), Vector3(-9, 0.1, 15.8),
+	]
+	var ring_ok := true
+	player.global_position = ring[0]
+	await _physics_frames(2)
+	for i in range(1, ring.size()):
+		var reached := await _drive_to(player, ring[i])
+		if not reached:
+			ring_ok = false
+			printerr("      绕圈卡死于 leg %d，终点=%s" % [i, player.global_position])
+	check(ring_ok, "L2 环绕四周通行无阻（5 段全部抵达）")
+
+	print("-- D：L2 门楼/围栏无冲突 --")
+	# d1 门楼柱区（旋转后世界 (-10.45/-7.55, z≈16.4)）：柱为纯装饰无碰撞；
+	# 该区与 Door_Blocker（封门洞，屋体部件）空间上重叠属预期——只检查
+	# 「非屋体」的 layer1 碰撞体不得出现在门楼区。
+	var space := get_viewport().world_3d.direct_space_state
+	var gate_shape := BoxShape3D.new()
+	gate_shape.size = Vector3(3.6, 1.4, 1.6)
+	var gate_params := PhysicsShapeQueryParameters3D.new()
+	gate_params.shape = gate_shape
+	# 抬高到 y∈[0.3,1.7]：地形 Ground 也是 layer1，查询框贴地会误触地面板块
+	gate_params.transform = Transform3D(Basis(), Vector3(-9, 1.0, 16.4))
+	gate_params.collision_mask = 1
+	var foreign := 0
+	for h in space.intersect_shape(gate_params, 8):
+		var c := (h.get("collider") as Node)
+		var in_house := false
+		var anc2 := c
+		while anc2 != null:
+			if String(anc2.name).begins_with("House_L"):
+				in_house = true
+				break
+			anc2 = anc2.get_parent()
+		if not in_house:
+			foreign += 1
+			printerr("      门楼区异物：%s" % String(c.name))
+	check(foreign == 0, "L2 门楼柱区无非屋体 layer1 碰撞（柱纯装饰不挡路）")
+	# d2 屋体不越围栏线 z=15：从围栏线南侧向屋体方向射矮射线，命中不得是屋体部件
+	var fence_hit := _ray(Vector3(-9, 0.6, 13.0), Vector3(-9, 0.6, 16.0))
+	var fh := fence_hit.get("collider") as Node
+	var house_part := false
+	var anc := fh
+	while anc != null:
+		if String(anc.name).begins_with("House_L"):
+			house_part = true
+			break
+		anc = anc.get_parent()
+	check(not house_part, "L2 屋体不越 z=15 围栏线（矮射线未命中屋体）")
+	# d3 围栏缺口通行：农场内路从缺口 (0,15) 进出院区
+	player.global_position = Vector3(0, 0.1, 13.2)
+	await _physics_frames(2)
+	var through := await _drive_to(player, Vector3(0, 0.1, 17.8), 240)
+	check(through, "围栏 x=0 缺口可通行（院门动线不堵）")
+
+	print("-- F：屋顶 OcclusionFader 淡出/恢复（真实 fader）--")
+	var fader := get_tree().get_first_node_in_group("occlusion_fader")
+	check(fader != null, "OcclusionFader 存在")
+	GameState.house.level = 1
+	if gr.has_method("_rebuild_house"):
+		gr.call("_rebuild_house")
+	await _physics_frames(4)
+	# 玩家贴北正面墙外（rig 相机在南上方，视线穿屋顶 → 淡出）
+	player.global_position = Vector3(-9, 0.1, 16.3)
+	await _physics_frames(60)
+	var roof_mat := _roof_surface_mat(world)
+	var a_near := roof_mat.albedo_color.a if roof_mat != null else 1.0
+	check(roof_mat != null and a_near < 0.9, "屋顶靠近时淡出（alpha=%.2f < 0.9）" % a_near)
+	# 走远 → 恢复
+	player.global_position = Vector3(-3, 0.1, 7)
+	await _physics_frames(80)
+	var roof_mat2 := _roof_surface_mat(world)
+	var a_far := roof_mat2.albedo_color.a if roof_mat2 != null else 0.0
+	check(roof_mat2 != null and a_far > 0.99, "屋顶走远后恢复不透明（alpha=%.2f）" % a_far)
+
+	player.set_physics_process(true)
+
+func _drive_to(player: CharacterBody3D, to: Vector3, timeout := 300) -> bool:
+	for i in range(timeout):
+		var d := to - player.global_position
+		d.y = 0.0
+		if d.length() < 1.0:
+			return true
+		player.velocity = d.normalized() * 8.5
+		player.move_and_slide()
+		await get_tree().physics_frame
+	return (to - player.global_position).length() < 1.0
+
+## 取当前主屋屋顶网格的第一张表面材质（淡出发生在 surface override 上）
+func _roof_surface_mat(world: Node) -> StandardMaterial3D:
+	for n in world.find_children("Roof_Body*", "StaticBody3D", true, false):
+		for m in n.find_children("*", "MeshInstance3D", true, false):
+			var mi := m as MeshInstance3D
+			if mi == null or mi.mesh == null:
+				continue
+			for si in mi.mesh.get_surface_count():
+				var mat := mi.get_active_material(si) as StandardMaterial3D
+				if mat != null:
+					return mat
+	return null
